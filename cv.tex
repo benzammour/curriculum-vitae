@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage[margin=2cm, a4paper]{geometry}
+\usepackage{fontenc}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{titlesec} % Allows creating custom \sections
+
+\usetikzlibrary{
+  shapes.misc,positioning,
+  arrows,
+  fadings,
+  calc,
+  arrows.meta,
+  backgrounds,
+  shadings,
+  calendar,
+  er,
+  patterns,
+  shapes,
+  shapes.geometric,
+  decorations,
+  decorations.text,
+  topaths
+}
+
+\setlength{\parindent}{0cm}
+\setlength{\emergencystretch}{2pt}
+
+\titleformat{\section}{  % ----------------- custom section
+    \Large\bfseries\addfontfeature{LetterSpace=10.0}
+}{}{0em}{}[\vspace{-1em}\noindent\rule{.1\textwidth}{1pt}] % smallcaps, Large, continuous line - l
+\titlespacing{\section}{0pt}{6pt}{6pt} % Spacing around titles {<left spacing>}{<before spacing>}{<after spacing>}
+
+\titleformat{\subsection}{  % ----------------- custom section
+    \large\bfseries\addfontfeature{LetterSpace=10.0}
+}{}{0em}{}[\vspace{-1em}\noindent\rule{.05\textwidth}{1pt}] % smallcaps, Large, continuous line - l
+\titlespacing{\subsection}{0pt}{6pt}{3pt} % Spacing around titles {<left spacing>}{<before spacing>}{<after spacing>}
+
+
+
+\definecolor{textgrey}{HTML}{191919}
+\definecolor{grayray}{HTML}{BFBFBF}
+\definecolor{customgrey}{HTML}{fefefe}
+\definecolor{headergrey}{HTML}{eaeaea}
+
+\setmainfont[Ligatures=TeX]{Open Sans}
+\newfontfamily\verbatimfont{Open Sans}
+
+\makeatletter
+\newcommand{\heading}[1]{\textbf{\addfontfeature{LetterSpace=10.0}\LARGE \MakeUppercase{#1}}}
+\newcommand{\timelinebullet}{\color{grayray}\makebox[0pt]{\LARGE\noindent\textbullet}\hskip-0.3pt\vrule width .5pt\hspace{\labelsep}}
+\newcommand{\seperator}{\vspace{2em}{\color{grayray}\centerline{\rule{\linewidth}{.5pt}}}\vspace{.5em}}
+\newcommand{\globalcolor}[1]{
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+\title{ }
+\author{Samir Benzammour}
+\date{ }
+\setstretch{1.3}
+\pagestyle{empty}
+\urlstyle{same}
+\AtBeginDocument{\globalcolor{textgrey}}
+
+\begin{document}    % ------------------------------------------------- document begin
+
+\tikz[remember picture,overlay] {%
+    \node[rectangle, anchor=north, minimum width=\paperwidth, minimum height=5cm] (header) at (current page.north){};%
+    \node[right=1.65cm of header.north, anchor=west] (name) at (header.west) {
+        \begin{tabular}{l}
+            \textbf{\addfontfeature{LetterSpace=15.0}\Huge \MakeUppercase{Samir}}\\[0.3cm]
+            \textbf{\addfontfeature{LetterSpace=15.0}\Huge \MakeUppercase{Benzammour}}
+        \end{tabular}
+    };
+
+    \node[left=1.65cm of header.north, anchor=east](test) at (header.east) {
+        \begin{tabular}{l}
+            \small \textbf{e: }\textit{contact@example.com} \\[.1cm]
+            \small \textbf{t: }\textit{+49 123 456 789 01} \\[.1cm]
+            \small \textbf{w: }\textit{\url{https://example.com}}
+        \end{tabular}    
+    };
+}%
+
+\vspace{1.5cm}%
+
+\noindent\rule{\textwidth}{0.6pt}
+
+%---------------------------------------------------------------- Main Part
+\vspace{.5em}%
+
+    \small
+    \section*{\MakeUppercase{Persönliche Daten}}
+    \begin{tabular}{@{}lllll}
+        \textit{Geburtstag:}   & 01. Januar 9999       & \phantom{Placeholar} & \textit{Adresse:}      & Lorem 99, 01234 Ipsum\\[.3cm]
+        \textit{Geburtsort:}   & Lorem, Ipsum  &                       & \textit{Nationalität:} & deutsch
+    \end{tabular}
+
+    \seperator
+
+    \section*{\MakeUppercase{Studium \& Schulausbildung}}
+    \begin{tabular}{@{\,}r <{\hskip 2pt} !{\timelinebullet} >{\raggedright\arraybackslash}p{0.3\textwidth} >{\raggedright\arraybackslash}p{0.63\textwidth}}
+        & \begin{tabular}[t]{@{}l@{}}Bachelor of Science \\[-.4em] {\scriptsize \color{grayray} seit Jan 9999}\end{tabular} & an der Musteruniversität Münster\\[.75cm]
+        & \begin{tabular}[t]{@{}l@{}}Abitur \\[-.4em] {\scriptsize \color{grayray} Jan 9999}\end{tabular} & mit Note 0.0 am XY-Gymnasium in LOREM mit Leistungskursen X und Y
+    \end{tabular}
+
+    \seperator
+
+    \section*{\MakeUppercase{Berufserfahrung}}
+    \begin{tabular}{@{\,}r <{\hskip 2pt} !{\timelinebullet} >{\raggedright\arraybackslash}p{0.3\textwidth} >{\raggedright\arraybackslash}p{0.63\textwidth}}
+        & \begin{tabular}[t]{@{}l@{}}Firmenname1 \\[-.4em] {\scriptsize \color{grayray} Jan 9999 -- heute}\end{tabular} &  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ac.\\[1.5cm]
+        & \begin{tabular}[t]{@{}l@{}}Firmenname2 \\[-.4em] {\scriptsize \color{grayray} Jan 9999 -- Jan 9999}\end{tabular} & Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ac
+    \end{tabular}
+
+    \seperator
+
+    \section*{\MakeUppercase{Ausgewählte Projekte}}
+        \textbf{Lorem Ipsum dolor sit}\vspace{-1em}\\
+        \noindent\rule{.05\textwidth}{1pt}\\
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. \\
+
+        \textbf{Lorem Ipsum dolor sit}\vspace{-1em}\\
+        \noindent\rule{.05\textwidth}{1pt}\\
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.\\
+        
+        \textbf{Lorem Ipsum dolor sit}\vspace{-1em}\\
+        \noindent\rule{.05\textwidth}{1pt}\\
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+
+    \newpage
+    \section*{\MakeUppercase{Skills}}
+    \subsection*{\MakeUppercase{Technische Skills}}
+    \begin{minipage}[t]{.33\textwidth}
+        \textbf{\MakeUppercase{Programmiersprachen:}}\\
+        Sprache1\\
+        Sprache2\\
+        Sprache3\\
+        Sprache4\\
+        Sprache5\\
+        Sprache6
+    \end{minipage}
+    \begin{minipage}[t]{.33\textwidth}
+        \textbf{\MakeUppercase{Tools/Betriebssysteme:}}\\
+        Tool1\\
+        Tool2\\
+        Tool3\\
+        Tool4\\
+        Tool5\\
+        Tool6
+    \end{minipage}
+    \begin{minipage}[t]{.33\textwidth}
+        \textbf{\MakeUppercase{Office Software/Tools:}}\\
+        {\fontfamily{lmr}\selectfont \LaTeX}\\
+        Markdown\\
+        Microsoft Office\\
+        Open-/Libre Office
+    \end{minipage}
+
+    \vspace{.3cm}
+
+    \subsection*{\MakeUppercase{Sprachen}}
+    \begin{tabular}{@{}ll}
+        Deutsch     & Muttersprache\\ 
+        Sprache1   & Sprachlevel\\ 
+        Sprache2   & Sprachlevel\\ 
+        Sprache3   & Sprachlevel\\ 
+    \end{tabular}
+
+    \seperator
+
+    \section*{\MakeUppercase{Extrakurrikulares \& Hobbies}}
+    
+    \textbf{Lorem Ipsum dolor}\vspace{-1em}\\
+    \noindent\rule{.05\textwidth}{1pt}\\
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo du.\\
+
+    \textbf{Lorem Ipsum dolor}\vspace{-1em}\\
+    \noindent\rule{.05\textwidth}{1pt}\\
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo du.\\
+
+    \textbf{Interessen und Hobbies}\vspace{-1em}\\
+    \noindent\rule{.05\textwidth}{1pt}\\
+    \begin{minipage}[t]{.33\textwidth}
+        Hobby1\\
+        Hobby2\\
+        Hobby3\\
+    \end{minipage}%
+    \begin{minipage}[t]{.33\textwidth}
+        Hobby4\\
+        Hobby5\\
+    \end{minipage}
+\end{document}
